@@ -1,0 +1,65 @@
+import pandas as pd
+
+# ─── Coca-Cola Time Series ──────────────────────────────────────────────────────
+coke_data = {
+    'fiscal_period': [
+        '2021-FY',
+        '2020-FY',
+    ],
+    'Assets': [
+        94354,  # Total assets at December 31, 2021
+        87296,  # Total assets at December 31, 2020
+    ],
+    'Liabilities': [
+        69494,  # Total liabilities at December 31, 2021
+        66012,  # Total liabilities at December 31, 2020
+    ],
+    'NetCashProvidedByUsedInOperatingActivities': [
+        12625,  # Net cash from operating activities, 2021
+        9844,   # Net cash from operating activities, 2020
+    ],
+    'NetIncomeLoss': [
+        9771,   # Net income – 2021
+        7747,   # Net income – 2020
+    ],
+    'Revenues': [
+        38655,  # Net operating revenues – 2021
+        33014,  # Net operating revenues – 2020
+    ]
+}
+
+coke_df = pd.DataFrame(coke_data)
+coke_df.to_csv('coca_cola_timeseries.csv', index=False)
+print("Written coca_cola_timeseries.csv")
+
+# ─── ExxonMobil Time Series ────────────────────────────────────────────────────
+exxon_data = {
+    'fiscal_period': [
+        '2021-FY',
+        '2020-FY',
+    ],
+    'Assets': [
+        338923,  # Total assets at December 31, 2021 (in millions)
+        332750,  # Total assets at December 31, 2020 (in millions)
+    ],
+    'Liabilities': [
+        163240,  # Total liabilities at December 31, 2021
+        168620,  # Total liabilities at December 31, 2020
+    ],
+    'NetCashProvidedByUsedInOperatingActivities': [
+        48129,   # Net cash from operating activities, 2021
+        14668,   # Net cash from operating activities, 2020
+    ],
+    'NetIncomeLoss': [
+        23040,   # Net income – 2021
+       -22440,   # Net loss – 2020
+    ],
+    'Revenues': [
+        276692,  # Sales and other operating revenue – 2021
+        178574,  # Sales and other operating revenue – 2020
+    ]
+}
+
+exxon_df = pd.DataFrame(exxon_data)
+exxon_df.to_csv('exxon_timeseries.csv', index=False)
+print("Written exxon_timeseries.csv")
