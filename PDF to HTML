@@ -1,0 +1,40 @@
+# First, install pdfminer.six if you haven’t already:
+#    pip install pdfminer.six
+
+from pdfminer.high_level import extract_text_to_fp
+from pdfminer.layout import LAParams
+
+def pdf_to_html(input_pdf_path: str, output_html_path: str) -> None:
+    """
+    Convert a PDF file to a simple HTML file using pdfminer.six.
+    
+    Parameters
+    ----------
+    input_pdf_path : str
+        Path to the source PDF file.
+    output_html_path : str
+        Path where the generated HTML will be written.
+    """
+    # Configure layout analysis (you can tweak these parameters if needed)
+    laparams = LAParams(
+        # char_margin=2.0,    # spacing parameter to group characters into words
+        # line_margin=0.5,    # spacing to group lines into paragraphs
+        # word_margin=0.1,    # spacing to group words
+        # all these have sensible defaults; adjust only if layout is weird
+    )
+    
+    # Open the PDF and output file
+    with open(input_pdf_path, 'rb') as fp_in, open(output_html_path, 'wb') as fp_out:
+        # extract_text_to_fp will parse the PDF and emit HTML by setting output_type="html"
+        extract_text_to_fp(
+            fp_in,              # input file-like object
+            fp_out,             # output file-like object
+            laparams=laparams,  # layout parameters
+            output_type='html'  # HTML output
+        )
+
+if __name__ == '__main__':
+    # Example usage
+    pdf_to_html('document.pdf', 'document.html')
+    print("Conversion complete: document.html")
+
